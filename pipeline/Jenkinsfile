@@ -30,7 +30,6 @@ pipeline
                 userRemoteConfigs: [[url: 'https://github.com/anvesh519/selenium-docker-allure.git']]])
               sh "ls -ltr"
           }
-        }
                 }
                 stage('Docker build')
                 {
