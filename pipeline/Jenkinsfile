@@ -28,10 +28,10 @@ pipeline
                         checkout([
                                 $class: 'GitSCM', branches: [[name: 'master']],
                                 userRemoteConfigs: [[url: 'https://github.com/anvesh519/selenium-docker-allure.git']]
-                                sh('''
-                                     git status
-                                   ''')
+                      
                         ])
+                        
+                        sh "git status"    
 
                         // Create Allure report folders and grant relevant permissions
                         sh "mkdir -p ./blazedemo_app/allure-results"
