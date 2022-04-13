@@ -20,24 +20,17 @@ pipeline
             agent any // run the pipeline on any available node
             stages
             {
-                stage('SCM: code update')
-                {
-                    steps
-                    {
-                        // checking out repository
-                        checkout([
-                                $class: 'GitSCM', branches: [[name: 'master']],
-                                userRemoteConfigs: [[url: 'https://github.com/anvesh519/selenium-docker-allure.git']]
-                      
-                        ])
-                        
-                        sh "git status"    
-
-                        // Create Allure report folders and grant relevant permissions
-                        sh "mkdir -p ./blazedemo_app/allure-results"
-                        sh "rm -rf ./blazedemo_app/allure-results/*"
-                        sh "chown jenkins:jenkins ./blazedemo_app/allure-results"
-                    }
+                stage('SCM: code update') {
+            steps {
+              checkout([$class: 'GitSCM', 
+                branches: [[name: '*/main']],
+                doGenerateSubmoduleConfigurations: false,
+                extensions: [[$class: 'CleanCheckout']],
+                submoduleCfg: [], 
+                userRemoteConfigs: [[url: 'https://github.com/anvesh519/selenium-docker-allure.git']]])
+              sh "ls -ltr"
+          }
+        }
                 }
                 stage('Docker build')
                 {
