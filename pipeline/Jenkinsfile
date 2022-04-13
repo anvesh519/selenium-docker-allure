@@ -39,7 +39,7 @@ pipeline
                         {
                             // copying and building selenium base
                             bat "copy selenium-base-image/Dockerfile ."
-                            docker.build("blazemeter/selenium_base")
+                            docker.build("blazemeter/taurus")
 
                             // copying and building selenium image
                             bat "copy selenium-automation-run/Dockerfile ."
