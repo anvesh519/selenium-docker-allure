@@ -27,7 +27,7 @@ pipeline
                         // checking out repository
                         checkout([
                                 $class: 'GitSCM', branches: [[name: 'master']],
-                                userRemoteConfigs: [[url: 'https://github.com/eliranshani/selenium-docker-allure.git']]
+                                userRemoteConfigs: [[url: 'https://github.com/anvesh519/selenium-docker-allure.git']]
                         ])
 
                         // Create Allure report folders and grant relevant permissions
